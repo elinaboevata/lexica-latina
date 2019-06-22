@@ -1,0 +1,3 @@
+[submodule "tei-lex-0-submodule"]
+	path = tei-lex-0-submodule
+	url = https://github.com/BCDH/tei-lex-0-submodule.git
