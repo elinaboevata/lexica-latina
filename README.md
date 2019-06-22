@@ -1,1 +1,6 @@
-# lexica-latina
+# Lexica Latina
+
+
+## Installation
+
+- clone this repository
