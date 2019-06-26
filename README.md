@@ -34,15 +34,15 @@ Before you make your next contribution, you have to make sure that your local br
 1. **In GitHub Desktop, in your local working copy, fetch origin.**  
    This will check whether there were any changes made to _your_ fork _remotely_ (i.e. if you committed and pushed some stuff to your fork from a different computer)
 2. **If GitHub Desktop instructs you to pull origin, pull origin.**  
-   This will make sure that _your local_ and _your remote_ files are in sync. 
-3. **Branch > Update from master**  
-   This will now, in addition, update _your local branch_ with all the contributions that have meanwhile been merged into the master from the other branches. Remember, each contributor works in their own branch.
+   This will make sure that _your local_ and _your remote_ files are in sync.
+3. **Branch > Merge into current branch > Upstream/master**  
+   This will now, in addition, update _your fork_ with all the contributions that have been merged into the original repo from other forks. Remember, each contributor works in their own fork.
 4. **If GitHub Desktop instructs you to push origin, push origin.**  
-   This will make sure that the changes from the master branch, which you've added to  _your local_ branch in the previous step, will also make it to _your remote branch_. With your local and remote branch fully updated and sync you can finally get to do your work.
+   This will make sure that the changes from the original repo, which you've just added to  _your local master branch_ in the previous step, will also make it to _your remote master branch_. With your local and remote branches fully updated and sync you can finally get to do your work.
 4. **Do your work.**
 5. **Commit your work.**  
-   This will save your work to _your_ branch _locally_.
+   This will save your work to _your local branch_.
 6. **Push origin.**  
-   This will save your work to _your_ branch _remotely_.
+   This will save your work to _your remote branch_.
 7. **Create a pull request.**  
-  This will alert the repository admin person that there are changes that should be merged into the master branch, i.e. made public.
+  This will alert the repository admin person that there are changes in your fork that should be merged into the original repository.
