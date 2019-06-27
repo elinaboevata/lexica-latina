@@ -12,7 +12,7 @@ entry {
 
 form[type="lemma"] {
 	font-weight: bold;
-	color: blue;
+	color: green;
 }
 
 gramGrp pos {
