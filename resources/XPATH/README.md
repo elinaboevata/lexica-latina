@@ -195,7 +195,7 @@ In the following examples, we'll be working with the file you downloaded earlier
     </tr>
   <tr>
     <td>/</td>
-    <td>Selects from the root node</td>
+    <td>Selects from the document node</td>
     </tr>
   <tr>
     <td>//</td>
@@ -220,7 +220,7 @@ What does that mean concretely when applied to our dictionary file? Try all of t
 
 | Expression | Selects                                   |
 | ---------- | ----------------------------------------- |
-| `/`        | the entire document node                  |
+| `/`        | the document node                  |
 | `/TEI`     | `<TEI>` which is the root node            |
 | `/entry`   | nothing because `<entry>` is no root node |
 | `//entry`  | all entries, no matter where they are     |
