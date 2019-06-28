@@ -1,8 +1,8 @@
 # XPath for Dictionary Nerds
 
 **Author:** Toma Tasovac ([@ttasovac](https://twitter.com/ttasovac))
-**Version:** 1.0
-**Date:** 2017-12-03
+**Version:** 1.1.1
+**Date:** 2019-06-28
 **License:** `CC BY-SA`
 
 **Table of Contents**
@@ -55,7 +55,7 @@ You should already be familiar with types of nodes in XML:
 You should already be familiar with the fundamentals of the XML tree structure:
 
 - The **root** element forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like branches and leaves from this topmost element
-- Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested inside another element (the parent). In the following example, the element `<lemma>` is nested in the element `<entry>`. Consequently, `<lemma>` is the child of `<entry>` and <entry> the parent of `<lemma>`:
+- Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested inside another element (the parent). In the following example, the element `<lemma>` is nested in the element `<entry>`. Consequently, `<lemma>` is the child of `<entry>` and `<entry>` the parent of `<lemma>`:
 
   ```xml
   <entry>
@@ -244,7 +244,7 @@ Double-slash is your friend. `//entry` will select all entry nodes no matter whe
 
 | Expression | Selects                              |
 | ---------- | ------------------------------------ |
-| `@type`    | all type attributes, no matter where |
+| `//@type`    | all type attributes, no matter where |
 
 
 #### Selecting predicates
@@ -259,11 +259,11 @@ Predicates are always written in _square brackets_.
 | `//body/entry[last()]`         | last entry                           |
 | `//body/entry[last()-1]`       | penultimate entry                    |
 | `//body/entry[position() < 4]` | first three entries                  |
+| ` //body/entry[position() > last() - 3`] | last three entries         |
 | `//cit[@type]`                 | all cit nodes with type attribute    |
 | `//cit[not(@type)]`            | all cit nodes without type attribute |
 | `//cit[@type='translation']`   | all cit nodes of type translation    |
 | `//form[orth="competitor"]`    | all forms whose orth = competitor    |
-
 
 Now, as you can see, it's easy to select a node such as `form` whose child (`orth`) is of a particular value. But what if you want to select the entire `entry` whose orthographic form is of a particular value? Let's take this in three steps:
 
@@ -307,7 +307,7 @@ To select more than one path, we use the or operator (`|`). For instance:
 | ---------------------------- | ------------------------------- |
 | `//form/orth`                | selects all orths               |
 | `//form/pron`                | selects all prons               |
-| `//form/orths | //form/pron` | selects all orths and all prons |
+| `//form/orths | //form/pron` | selects all orths and all prons (by selecting either orths or prons) |
 
 ![Скриншот 2017-12-05 07.00.50](https://i.imgur.com/9SuDvtO.png)
 
@@ -380,10 +380,11 @@ So, what does mean in practice? Let's see one example in three individual steps:
 
 | Expression                          | Selects                               |
 | ----------------------------------- | ------------------------------------- |
-| `//orth`                            | all orths                             |
+| `//orth`                            | all orths, no matter where they are                           |
 | `//orth/following-sibling::pron`    | all prons that follow orths           |
 | `//orth/following-sibling::pron[1]` | all the first prons that follow orths |
 | `//orth/following-sibling::*`       | all elements that follow orth         |
+| `//orth/following-sibling::*[1]`    | all the immediate siblings of orth        |
 
 Now, the interesting thing about the last expression is that it will also select this particular case:
 
@@ -397,8 +398,11 @@ As we learned above, `*` selects any element node, and if you look for `//orth/f
 
 ![Скриншот 2017-12-05 07.44.01](https://i.imgur.com/8SP6Df8.png)
 
+TODO: Add more examples, especially explaining the difference between the first occurrence of a sibling and the immediate sibling.
+
 **Exercise**
 
-1. We haven't specifically covered this, but let's see if we can figure out the following expression: `//entry[count(sense)>1]`
-2. What is the difference between `//entry[count(sense)>1]` and `//entry[count(.//sense)>1]`?
-3. What is the difference between `//entry[count(child::sense)>1]` and `//entry[count(descendant::sense)>1]`?
+1. Select all elements that are immediate siblings of orth other than pron and hyph
+2. We haven't specifically covered this, but let's see if we can figure out the following expression: `//entry[count(sense)>1]`
+3. What is the difference between `//entry[count(sense)>1]` and `//entry[count(.//sense)>1]`?
+4. What is the difference between `//entry[count(child::sense)>1]` and `//entry[count(descendant::sense)>1]`?
